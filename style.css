@@ -72,39 +72,37 @@ nav ul li a:hover {
     color: #FFEB3B;
 }
 
-/* Hero Section */
+/* Hero Section - Responsive Fix */
 #hero {
     background: url('https://source.unsplash.com/1600x900/?ocean,calm,therapy') no-repeat center center/cover;
-    color: blue;
+    color: white;
     text-align: center;
-    padding: 120px 0;
+    padding: 15vw 5vw; /* Χρησιμοποιούμε ποσοστά για προσαρμογή σε κάθε οθόνη */
+    min-height: 60vh; /* Για να μην κόβεται */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
+/* Responsive Hero Text */
 #hero h2 {
-    font-size: 36px;
+    font-size: clamp(24px, 5vw, 48px); /* Αυτόματη αλλαγή μεγέθους */
     font-weight: bold;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    margin: 10px 0;
 }
 
 #hero p {
-    font-size: 20px;
-    margin-bottom: 20px;
+    font-size: clamp(16px, 3vw, 22px);
+    max-width: 80%;
+    margin: 0 auto 20px;
 }
 
+/* Responsive Button */
 #hero .btn {
-    display: inline-block;
-    background: #FFD54F;
-    color: black;
-    padding: 12px 24px;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 30px;
-    margin-top: 20px;
-    transition: background 0.3s ease-in-out;
-}
-
-#hero .btn:hover {
-    background: #FFEB3B;
+    font-size: clamp(14px, 2.5vw, 18px);
+    padding: 12px 20px;
 }
 
 /* Σχετικά */
