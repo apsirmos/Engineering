@@ -3,7 +3,7 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background: blue;
+    background: #E3F2FD;
     color: #333;
 }
 
@@ -55,7 +55,7 @@ nav ul {
     list-style: none;
     text-align: center;
     padding: 0;
-    background: red;
+    background: #42A5F5;
     margin: 0;
 }
 
@@ -128,4 +128,3 @@ footer {
     padding: 20px;
     font-size: 14px;
 }
-Στάλθηκε
