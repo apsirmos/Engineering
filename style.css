@@ -22,7 +22,7 @@ body {
 }
 
 #intro img {
-    width: 200px;
+    width: 500px;
     opacity: 0;
     animation: fadeIn 2s ease-in-out forwards;
 }
