@@ -21,7 +21,7 @@ body {
 }
 
 #intro img {
-    width: 250px;
+    width: auto;
     opacity: 0;
     animation: fadeIn 2s ease-in-out forwards;
 }
@@ -75,7 +75,7 @@ nav ul li a:hover {
 /* Hero Section */
 #hero {
     background: url('https://source.unsplash.com/1600x900/?ocean,calm,therapy') no-repeat center center/cover;
-    color: white;
+    color: blue;
     text-align: center;
     padding: 120px 0;
 }
