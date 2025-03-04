@@ -10,7 +10,7 @@ body {
 /* Εισαγωγικό Logo */
 #intro {
     background: #1565C0;
-    height: 100vh;
+    height: 200vh;
     display: flex;
     align-items: center;
     justify-content: center;
