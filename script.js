@@ -1,3 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("Το site είναι έτοιμο!");
+    setTimeout(() => {
+        document.getElementById("intro").style.display = "none";
+    }, 3000);
+
+    document.querySelector("form").addEventListener("submit", function (event) {
+        event.preventDefault();
+        alert("Το μήνυμα στάλθηκε επιτυχώς!");
+        this.reset();
+    });
 });
