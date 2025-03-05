@@ -63,7 +63,7 @@ body {
 /* === RESPONSIVE ΓΙΑ ΚΙΝΗΤΑ === */
 @media (max-width: 768px) {
     .header-container {
-        flex-direction: column; /* Στοίχιση σε κάθετη διάταξη στο κινητό */
+        flex-direction: row; /* Στοίχιση σε κάθετη διάταξη στο κινητό */
         text-align: center;
     }
 
