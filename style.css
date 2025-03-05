@@ -63,6 +63,28 @@ body {
 
 /* === RESPONSIVE ΓΙΑ ΚΙΝΗΤΑ === */
 @media (max-width: 768px) {
+
+    /* Εισαγωγικό Logo */
+#intro {
+    background: #b2d4c4;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeOut 5s ease-in-out forwards;
+    animation-delay: 5s;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+#intro img {
+    width: 500px;
+    height: 100px
+    opacity: 0;
+    animation: fadeIn 4s ease-in-out forwards;
+}
+
     .header-container {
         display: flex;
         align-items: center;
