@@ -87,12 +87,12 @@ body {
 }
 
 .site-title {
-    font-size: 32px; /* Κανονικό μέγεθος για desktop */
+    font-size: 18px; /* Κανονικό μέγεθος για desktop */
     margin: 0;
 }
 
 .site-subtitle {
-    font-size: 24px;
+    font-size: 14px;
     margin: 0;
 }
 
