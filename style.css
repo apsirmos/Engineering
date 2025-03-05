@@ -101,6 +101,7 @@ nav ul li a {
     color: white;
     text-decoration: none;
     font-size: 18px;
+    font-weight: bold;
     transition: color 0.3s ease-in-out;
 }
 
@@ -165,12 +166,20 @@ nav ul li a:hover {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     width: fit-content;
     text-align: center;
+    opacity: 0;
+    animation: fadeIn 3s ease-in forwards;
 }
+
+/* Καθυστερούμε την εμφάνιση κάθε στοιχείου */
+#services ul li:nth-child(1) { animation-delay: 2s; }
+#services ul li:nth-child(2) { animation-delay: 2s; }
+#services ul li:nth-child(3) { animation-delay: 2s; }
+#services ul li:nth-child(4) { animation-delay: 2s; }
 
 /* Άρθρα */
 #articles {
     background: #bbdefb;
-    padding: 60px 20px;
+    padding: 20px 20px;
     text-align: center;
 }
 
@@ -195,9 +204,17 @@ article a {
 /* Φόρμα επικοινωνίας */
 #contact {
     background: white;
+    padding: 20px 20px;
+    text-align: center;
+}
+
+#other-contact {
+    background: #f5cc16;
     padding: 60px 20px;
     text-align: center;
 }
+
+
 
 form {
     display: flex;
@@ -237,13 +254,21 @@ button:hover {
 /* Φόρμα Κλείσιμο Ραντεβού */
 #appointment form {
     max-width: 400px;
-    margin: 20px auto;
     background: blue;
-    padding: 20px;
+    padding: 20px 20px ;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    animation: slideUp 1s ease-in-out;
+    animation: slideUp 2s ease-in-out;
+    text-align: left;
+    justify-content: center;
+    align-items: center;
+
 }
+
+#appointment h2{
+      text-align: center;
+}
+
 
 input, button {
     width: 100%;
@@ -264,6 +289,15 @@ button {
 button:hover {
     background: #1565C0;
 }
+
+footer {
+    background: #bbdefb;
+    padding: 10px 10px;
+    text-align: center;
+}
+
+
+
 
 /* Animations */
 @keyframes fadeOut {
