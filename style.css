@@ -34,20 +34,20 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 20px;
+    padding: 0px 0px;
     background-color: #ede2cc;
     flex-wrap: wrap; /* Επιτρέπει να αναδιπλώνεται στο κινητό */
 }
 
 .logo-container img {
-    width: 70px; /* Μείωση μεγέθους για καλύτερη εμφάνιση */
-    height: auto;
+    width: 90px; /* Μείωση μεγέθους για καλύτερη εμφάνιση */
+    height: 90px;
 }
 
 .title-container {
     text-align: left;
     flex: 1; /* Να καταλαμβάνει τον υπόλοιπο χώρο */
-    padding-left: 10px;
+    padding-left: 20px;
 }
 
 .site-title {
