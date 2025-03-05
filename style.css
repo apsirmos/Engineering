@@ -90,13 +90,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0px 0px;
+    padding: 0px 0px 0px 0px;
     background-color: #ede2cc;
     flex-wrap: wrap; /* Επιτρέπει να αναδιπλώνεται στο κινητό */
 }
 
 .logo-container img {
-    width: auto; /* Μείωση μεγέθους για καλύτερη εμφάνιση */
+    width: 130px; /* Μείωση μεγέθους για καλύτερη εμφάνιση */
     height: 130px;
 }
 
