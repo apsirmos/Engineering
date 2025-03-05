@@ -97,7 +97,7 @@ body {
 
 .logo-container img {
     width: 100%; /* Μείωση μεγέθους για καλύτερη εμφάνιση */
-    height: auto;
+    height: 120px;
     display: block;
 }
 
