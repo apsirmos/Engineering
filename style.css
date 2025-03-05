@@ -16,8 +16,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: fadeOut 2s ease-in-out forwards;
-    animation-delay: 3s;
+    animation: fadeOut 5s ease-in-out forwards;
+    animation-delay: 5s;
     position: fixed;
     width: 100%;
     z-index: 1000;
@@ -26,7 +26,7 @@ body {
 #intro img {
     width: 500px;
     opacity: 0;
-    animation: fadeIn 2s ease-in-out forwards;
+    animation: fadeIn 4s ease-in-out forwards;
 }
 
 /* HEADER */
