@@ -3,7 +3,7 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background: beige;
+    background: #E3F2FD;
     color: #333;
 }
 
@@ -17,7 +17,7 @@ body {
     animation: fadeOut 2s ease-in-out forwards;
     animation-delay: 3s;
     position: fixed;
-    width: 200%;
+    width: 100%;
     z-index: 1000;
 }
 
@@ -27,30 +27,7 @@ body {
     animation: fadeIn 2s ease-in-out forwards;
 }
 
-/* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.8); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; visibility: hidden; }
-}
-
-/* Header */
-header {
-    background: #1976D2;
-    color: white;
-    text-align: center;
-    padding: 30px 0;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 28px;
-}
-
+/* Navigation Bar */
 nav ul {
     list-style: none;
     text-align: center;
@@ -70,29 +47,32 @@ nav ul li a {
     font-size: 18px;
 }
 
-section {
-    padding: 50px;
-    text-align: center;
+nav ul li a:hover {
+    color: #FFD700;
 }
 
-#services ul {
-    list-style: none;
-    padding: 0;
+/* Background Images Section */
+#background-images {
+    background: url('therapy_background.jpg') center/cover no-repeat;
+    height: 50vh;
+    position: relative;
 }
 
-#services ul li {
-    background: white;
-    display: inline-block;
-    padding: 15px;
-    margin: 10px;
-    border-radius: 10px;
+.image-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
     font-weight: bold;
-    color: #1976D2;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Φόρμα επικοινωνίας */
-form {
+/* Φόρμα Κλείσιμο Ραντεβού */
+#appointment form {
     max-width: 400px;
     margin: 20px auto;
     background: white;
@@ -101,7 +81,7 @@ form {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-input, textarea {
+input, button {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
