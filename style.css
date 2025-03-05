@@ -64,8 +64,12 @@ body {
 /* === RESPONSIVE ΓΙΑ ΚΙΝΗΤΑ === */
 @media (max-width: 768px) {
     .header-container {
-        flex-direction: row; /* Στοίχιση σε κάθετη διάταξη στο κινητό */
-        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px 0px;
+        background-color: #ede2cc;
+        flex-wrap: wrap; /* Επιτρέπει να αναδιπλώνεται στο κινητό */
     }
 
     .logo-container img {
@@ -74,11 +78,11 @@ body {
     }
 
     .site-title {
-        font-size: 30px; /* Μείωση μεγέθους τίτλου */
+        font-size: 28px; /* Μείωση μεγέθους τίτλου */
     }
 
     .site-subtitle {
-        font-size: 20px; /* Μείωση μεγέθους υπότιτλου */
+        font-size: 18px; /* Μείωση μεγέθους υπότιτλου */
     }
 
     #services h2 {
