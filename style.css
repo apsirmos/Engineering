@@ -96,8 +96,9 @@ body {
 }
 
 .logo-container img {
-    width: 130px; /* Μείωση μεγέθους για καλύτερη εμφάνιση */
-    height: 130px;
+    width: 100%; /* Μείωση μεγέθους για καλύτερη εμφάνιση */
+    height: auto;
+    display: block;
 }
 
 .title-container {
