@@ -97,7 +97,7 @@ body {
 
 .logo-container img {
     width: auto; /* Μείωση μεγέθους για καλύτερη εμφάνιση */
-    height: 90px;
+    height: 130px;
 }
 
 .title-container {
@@ -107,12 +107,12 @@ body {
 }
 
 .site-title {
-    font-size: 32px; /* Κανονικό μέγεθος για desktop */
+    font-size: 24px; /* Κανονικό μέγεθος για desktop */
     margin: 0;
 }
 
 .site-subtitle {
-    font-size: 24px;
+    font-size: 16px;
     margin: 0;
 }
 }
