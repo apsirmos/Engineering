@@ -10,7 +10,7 @@ body {
 
 /* Εισαγωγικό Logo */
 #intro {
-    background: #f0d395;
+    background: #b2d4c4;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -27,6 +27,23 @@ body {
     opacity: 0;
     animation: fadeIn 2s ease-in-out forwards;
 }
+
+header {
+    display: flex;
+    justify-content: space-between; /* Τοποθετεί τα στοιχεία στις άκρες */
+    align-items: center; /* Κεντράρει κάθετα */
+    padding: 10px 20px;
+    background-color: #ede2cc;
+}
+
+.logo-container img {
+    width: 120px; /* Ρύθμισε το μέγεθος */
+    height: auto;
+}
+
+
+
+
 
 /* Navigation Bar */
 nav ul {
@@ -55,7 +72,7 @@ nav ul li a:hover {
 
 /* Background Section */
 #background {
-    background: url('therapy_background.jpg') center/cover no-repeat;
+    background: url('https://bunny-wp-pullzone-3xue3q6yzy.b-cdn.net/wp-content/uploads/2024/10/What-Is-Applied-Psychology-Hero-Image.jpg?width=1200') center/cover no-repeat;
     height: 60vh;
     position: relative;
     animation: fadeIn 3s ease-in-out;
@@ -119,4 +136,4 @@ button:hover {
 @keyframes slideUp {
     from { transform: translateY(50px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
-}
+}  
