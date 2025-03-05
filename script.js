@@ -4,6 +4,15 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("intro").style.display = "none";
     }, 3000);
 
+    // Smooth Scrolling
+    document.querySelectorAll("nav ul li a").forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            document.getElementById(targetId).scrollIntoView({ behavior: "smooth" });
+        });
+    });
+
     // Μήνυμα επιβεβαίωσης για τις φόρμες
     const forms = document.querySelectorAll("form");
     forms.forEach(form => {
@@ -14,4 +23,3 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
-Στάλθηκε
