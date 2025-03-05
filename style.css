@@ -64,41 +64,20 @@ body {
 /* === RESPONSIVE ΓΙΑ ΚΙΝΗΤΑ === */
 @media (max-width: 768px) {
 
-  /* Εισαγωγικό Logo */
-#intro {
-    background: #b2d4c4;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: fadeOut 5s ease-in-out forwards;
-    animation-delay: 5s;
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
-}
-
-#intro img {
-    width: 500px;
-    height: 100px
-    opacity: 0;
-    animation: fadeIn 4s ease-in-out forwards;
-}
-
-/* HEADER */
+  /* HEADER */
 .header-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0px 0px 0px 0px;
+    padding: 0px 0px;
     background-color: #ede2cc;
     flex-wrap: wrap; /* Επιτρέπει να αναδιπλώνεται στο κινητό */
 }
 
 .logo-container img {
-    width: 100%; /* Μείωση μεγέθους για καλύτερη εμφάνιση */
-    height: 120px;
-    display: block;
+    width: auto; /* Μείωση μεγέθους για καλύτερη εμφάνιση */
+    height: 100px;
+    padding: 0px 0px;
 }
 
 .title-container {
@@ -108,14 +87,13 @@ body {
 }
 
 .site-title {
-    font-size: 24px; /* Κανονικό μέγεθος για desktop */
+    font-size: 32px; /* Κανονικό μέγεθος για desktop */
     margin: 0;
 }
 
 .site-subtitle {
-    font-size: 16px;
+    font-size: 24px;
     margin: 0;
-}
 }
 
 
