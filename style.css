@@ -70,15 +70,15 @@ body {
 
     .logo-container img {
         width: 100px; /* Μικρότερο λογότυπο για κινητά */
-        height: 150px;
+        height: 100px;
     }
 
     .site-title {
-        font-size: 32px; /* Μείωση μεγέθους τίτλου */
+        font-size: 30px; /* Μείωση μεγέθους τίτλου */
     }
 
     .site-subtitle {
-        font-size: 22px; /* Μείωση μεγέθους υπότιτλου */
+        font-size: 20px; /* Μείωση μεγέθους υπότιτλου */
     }
 }
 
