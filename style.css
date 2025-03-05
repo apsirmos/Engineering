@@ -64,7 +64,7 @@ body {
 /* === RESPONSIVE ΓΙΑ ΚΙΝΗΤΑ === */
 @media (max-width: 768px) {
 
-    /* Εισαγωγικό Logo */
+  /* Εισαγωγικό Logo */
 #intro {
     background: #b2d4c4;
     height: 100vh;
@@ -85,40 +85,37 @@ body {
     animation: fadeIn 4s ease-in-out forwards;
 }
 
-    .header-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0px 0px;
-        background-color: #ede2cc;
-        flex-wrap: wrap; /* Επιτρέπει να αναδιπλώνεται στο κινητό */
-    }
-
-    .logo-container img {
-        width: 100px; /* Μικρότερο λογότυπο για κινητά */
-        height: 100px;
-    }
-
-    .site-title {
-        font-size: 28px; /* Μείωση μεγέθους τίτλου */
-    }
-
-    .site-subtitle {
-        font-size: 18px; /* Μείωση μεγέθους υπότιτλου */
-    }
-
-    #services h2 {
-    text-align:center;
+/* HEADER */
+.header-container {
+    display: flex;
     align-items: center;
-    justify-content: center;
-    font-weight: bold ;
-    color: white;
+    justify-content: space-between;
+    padding: 0px 0px;
+    background-color: #ede2cc;
+    flex-wrap: wrap; /* Επιτρέπει να αναδιπλώνεται στο κινητό */
 }
 
-
-    
+.logo-container img {
+    width: auto; /* Μείωση μεγέθους για καλύτερη εμφάνιση */
+    height: 90px;
 }
 
+.title-container {
+    text-align: left;
+    flex: 1; /* Να καταλαμβάνει τον υπόλοιπο χώρο */
+    padding-left: 20px;
+}
+
+.site-title {
+    font-size: 32px; /* Κανονικό μέγεθος για desktop */
+    margin: 0;
+}
+
+.site-subtitle {
+    font-size: 24px;
+    margin: 0;
+}
+}
 
 
 
