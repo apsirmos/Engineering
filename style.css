@@ -80,6 +80,17 @@ body {
     .site-subtitle {
         font-size: 20px; /* Μείωση μεγέθους υπότιτλου */
     }
+
+    #services h2 {
+    text-align:center;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold ;
+    color: white;
+}
+
+
+    
 }
 
 
