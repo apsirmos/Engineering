@@ -40,7 +40,7 @@ body {
 }
 
 .logo-container img {
-    width: 90px; /* Μείωση μεγέθους για καλύτερη εμφάνιση */
+    width: 200px; /* Μείωση μεγέθους για καλύτερη εμφάνιση */
     height: 90px;
 }
 
@@ -134,8 +134,8 @@ nav ul li a:hover {
 
 #about {
   text-align: center;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 
