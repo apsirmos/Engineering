@@ -25,6 +25,7 @@ body {
 
 #intro img {
     width: 500px;
+    height: 100px
     opacity: 0;
     animation: fadeIn 4s ease-in-out forwards;
 }
