@@ -1,3 +1,4 @@
+
 /* Γενικές Ρυθμίσεις */
 body {
     font-family: 'Poppins', sans-serif;
@@ -28,19 +29,56 @@ body {
     animation: fadeIn 2s ease-in-out forwards;
 }
 
-header {
+/* HEADER */
+.header-container {
     display: flex;
-    justify-content: space-between; /* Τοποθετεί τα στοιχεία στις άκρες */
-    align-items: center; /* Κεντράρει κάθετα */
+    align-items: center;
+    justify-content: space-between;
     padding: 10px 20px;
     background-color: #ede2cc;
+    flex-wrap: wrap; /* Επιτρέπει να αναδιπλώνεται στο κινητό */
 }
 
 .logo-container img {
-    width: 120px; /* Ρύθμισε το μέγεθος */
+    width: 70px; /* Μείωση μεγέθους για καλύτερη εμφάνιση */
     height: auto;
 }
 
+.title-container {
+    text-align: left;
+    flex: 1; /* Να καταλαμβάνει τον υπόλοιπο χώρο */
+    padding-left: 10px;
+}
+
+.site-title {
+    font-size: 24px; /* Κανονικό μέγεθος για desktop */
+    margin: 0;
+}
+
+.site-subtitle {
+    font-size: 16px;
+    margin: 0;
+}
+
+/* === RESPONSIVE ΓΙΑ ΚΙΝΗΤΑ === */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column; /* Στοίχιση σε κάθετη διάταξη στο κινητό */
+        text-align: center;
+    }
+
+    .logo-container img {
+        width: 50px; /* Μικρότερο λογότυπο για κινητά */
+    }
+
+    .site-title {
+        font-size: 20px; /* Μείωση μεγέθους τίτλου */
+    }
+
+    .site-subtitle {
+        font-size: 14px; /* Μείωση μεγέθους υπότιτλου */
+    }
+}
 
 
 
