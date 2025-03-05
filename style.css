@@ -68,7 +68,7 @@ body {
     }
 
     .logo-container img {
-        width: 50px; /* Μικρότερο λογότυπο για κινητά */
+        width: 100px; /* Μικρότερο λογότυπο για κινητά */
     }
 
     .site-title {
