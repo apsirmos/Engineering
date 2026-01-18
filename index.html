@@ -99,19 +99,24 @@
             <h2>Επικοινωνία</h2>
             <p>Μπορείτε να επικοινωνήσετε μαζί μου μέσω της παρακάτω φόρμας ή με άλλους τρόπους.</p>
             
-            <form action="https://formsubmit.co/info@athinatherapy.com" method="POST">
-                <input type="text" name="name" placeholder="Όνομα" required>
-                <input type="email" name="email" placeholder="Email" required>
-                <textarea name="message" placeholder="Μήνυμα" required></textarea>
+        <form action="https://formsubmit.co/info@athinatherapy.com" method="POST">
+
+            <input type="text" name="name" placeholder="Όνομα" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <textarea name="message" placeholder="Μήνυμα" required></textarea>
+
+            <!-- Απενεργοποίηση captcha -->
+            <input type="hidden" name="_captcha" value="false">
+
+            <!-- Μήνυμα επιτυχίας (χωρίς redirect) -->
+            <input type="hidden" name="_feedback" value="Το μήνυμά σας στάλθηκε επιτυχώς! Ευχαριστούμε για την επικοινωνία.">
+
+            <!-- Honey pot για spam bots -->
+            <input type="text" name="_honey" style="display:none">
+
+            <button type="submit">Αποστολή</button>
+        </form>
             
-                <!-- Optional redirect μετά την αποστολή -->
-                <input type="hidden" name="_next" value="https://amindtherapy.gr/thankyou.html">
-            
-                <!-- Προστασία από spam -->
-                <input type="text" name="_honey" style="display:none">
-            
-                <button type="submit">Αποστολή</button>
-            </form>
           </div>
     </section>
   
@@ -120,7 +125,6 @@
             <h3>Άλλοι τρόποι επικοινωνίας</h3>
             <p>📞 Τηλέφωνο: <a href="tel:+302100000000">+30 6951531836</a></p>
             <p>📩 Email: <a href="mailto:info@athinatherapy.com">info@athinatherapy.com</a></p>
-            <p>💬 WhatsApp: <a href="https://wa.me/302100000000">Στείλτε μήνυμα</a></p>
             <p>🔵 Facebook: <a href="#">A-Mind Therapy</a></p>
             <p>📸 Instagram: <a href="#">@amindtherapy</a></p>
   </section>
