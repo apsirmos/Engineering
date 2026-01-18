@@ -156,63 +156,100 @@
 
     </article>
 
-    <!-- ΑΞΙΟΛΟΓΗΣΗ (ίδια με Article 1 & 2) -->
+    <!-- Φόρμα αξιολόγησης (ίδια με article-1) -->
     <section class="card" aria-label="Αξιολόγηση άρθρου">
       <h2 style="margin-top:0;color:#0d47a1">Αξιολόγηση Άρθρου</h2>
 
-      https://formsubmit.co/info@athinatherapy.com
+      <form class="rating" id="rating-form" action="https://formsubmit.co/info@athinatherapy.com" method="POST">
         <div class="stars" aria-label="Επιλογή αξιολόγησης 1 έως 5">
-          <input type="radio" id="star5" name="rating" value="5" required><label for="star5">★</label>
-          <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
-          <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
-          <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
-          <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+          <input type="radio" id="star5" name="rating" value="5" required><label for="star5" title="5 αστέρια">★</label>
+          <input type="radio" id="star4" name="rating" value="4"><label for="star4" title="4 αστέρια">★</label>
+          <input type="radio" id="star3" name="rating" value="3"><label for="star3" title="3 αστέρια">★</label>
+          <input type="radio" id="star2" name="rating" value="2"><label for="star2" title="2 αστέρια">★</label>
+          <input type="radio" id="star1" name="rating" value="1"><label for="star1" title="1 αστέρι">★</label>
         </div>
 
-        <input type="text" name="name" placeholder="Όνομα (προαιρετικό)">
-        <input type="email" name="email" placeholder="Email (προαιρετικό)">
-        <textarea name="comments" placeholder="Σχόλια (προαιρετικά)"></textarea>
+        <input type="text"  name="name"  placeholder="Όνομα (προαιρετικό)" style="padding:10px;border:1px solid #e2edff;border-radius:10px;">
+        <input type="email" name="email" placeholder="Email (προαιρετικό)" style="padding:10px;border:1px solid #e2edff;border-radius:10px;">
+        <textarea name="comments" placeholder="Σχόλια (προαιρετικά)" style="min-height:110px;padding:10px;border:1px solid #e2edff;border-radius:10px;"></textarea>
 
-        <input type="hidden" name="article_title" value="Το ασυνείδητο βλέπει τους ανθρώπους πίσω από τις κουρτίνες">
-        <input type="hidden" name="article_url" id="article_url">
-
-        <input type="hidden" name="_captcha" value="false">
+        <!-- Κρυφά πεδία FormSubmit -->
+        <input type="hidden" name="article_title" value="Τι είναι το φαινόμενο placebo και πώς λειτουργεί;">
+        <input type="hidden" name="article_url"   id="article_url" value="">
+        <input type="hidden" name="_captcha"  value="false">
         <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_subject" value="Αξιολόγηση Άρθρου: Το Ασυνείδητο">
-        <input type="hidden" name="_next" id="form_next">
+        <input type="hidden" name="_subject"  value="Αξιολόγηση Άρθρου: Placebo">
+        <input type="hidden" name="_next"     id="form_next" value="">
 
         <button class="submit-btn" type="submit">Υποβολή αξιολόγησης</button>
-        <span class="note">Με την υποβολή αποδέχεστε την επεξεργασία των στοιχείων σας.</span>
+        <span class="note">Με την υποβολή, συμφωνείτε να γίνει επεξεργασία των στοιχείων σας για τον σκοπό της αξιολόγησης.</span>
       </form>
     </section>
 
-    <!-- Footer Nav -->
+    <!-- Footer navigation (ίδιο με article-1, διορθωμένα links) -->
     <div class="foot-nav">
-      ../index.html#articles‹ Πίσω στα Άρθρα</a>
-      #topΠάνω ↑</a>
+      <a href="../index.html#articles">‹ Πίσω στα Άρθρα</a>
+      <a href="#top">Πάνω ↑</a>
     </div>
-
   </main>
 
+  <!-- Toast για “Αντιγραφή συνδέσμου” -->
   <div class="toast" id="toast" style="display:none">Ο σύνδεσμος αντιγράφηκε!</div>
 
-  <!-- JS (ίδιο με Article 1 & 2) -->
+  <!-- Ίδιο JS με article-1 για share & redirect αξιολόγησης -->
   <script>
     (function(){
       const url  = window.location.href;
       const text = encodeURIComponent(document.title);
 
-      document.getElementById("article_url").value = url;
-      document.getElementById("form_next").value = url.includes("?") ? url + "&rated=1" : url + "?rated=1";
+      // Συμπλήρωση κρυφών πεδίων της αξιολόγησης
+      const articleUrlInput = document.getElementById('article_url');
+      if (articleUrlInput) articleUrlInput.value = url;
 
-      const sysBtn = document.getElementById("sysShareBtn");
+      const nextInput = document.getElementById('form_next');
+      if (nextInput) nextInput.value = url.includes('?') ? url + '&rated=1' : url + '?rated=1';
+
+      // Share links
+      const fb = document.getElementById('share-fb');
+      const tw = document.getElementById('share-x');
+      const li = document.getElementById('share-li');
+      const wa = document.getElementById('share-wa');
+      if(fb) fb.href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url);
+      if(tw) tw.href = 'https://twitter.com/intent/tweet?url=' + encodeURIComponent(url) + '&text=' + text;
+      if(li) li.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(url);
+      if(wa) wa.href = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + url);
+
+      // Native Share
+      const sysBtn = document.getElementById('sysShareBtn');
       if (navigator.share && sysBtn){
-        sysBtn.addEventListener('click', async()=>{ 
-          try { await navigator.share({title:document.title, url}); } catch(e){}
+        sysBtn.addEventListener('click', async () => {
+          try{ await navigator.share({title: document.title, url}); }catch(e){}
         });
-      } else if(sysBtn) sysBtn.style.display="none";
+      } else if (sysBtn) {
+        sysBtn.style.display = 'none';
+      }
+
+      // Copy link με toast
+      const copyBtn = document.getElementById('copy-link');
+      const toast   = document.getElementById('toast');
+      copyBtn?.addEventListener('click', async ()=>{
+        try{
+          await navigator.clipboard.writeText(url);
+          toast.style.display='block';
+          setTimeout(()=> toast.style.display='none', 1600);
+        }catch(e){}
+      });
+
+      // Ευχαριστήριο μετά την αξιολόγηση
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('rated') === '1'){
+        const t = document.createElement('div');
+        t.textContent = 'Ευχαριστούμε για την αξιολόγηση!';
+        t.style.cssText = 'position:fixed;top:12px;left:50%;transform:translateX(-50%);background:#155fb0;color:#fff;padding:10px 14px;border-radius:10px;z-index:9999;box-shadow:0 10px 24px rgba(0,0,0,.2)';
+        document.body.appendChild(t);
+        setTimeout(()=>{ t.remove(); history.replaceState({},'',window.location.pathname); }, 2200);
+      }
     })();
   </script>
-
 </body>
 </html>
