@@ -2,7 +2,9 @@
 /******************************************************
  * appointment.js
  * - Δυναμικά slots ώρας βάσει διαθεσιμότητας (static)
- * - Μήνυμα επιτυχίας μετά από FormSubmit redirect (?appt=1)
+ * - Επιλογή 1ης διαθέσιμης ημέρας με slots
+ * - Κόψιμο παρελθοντικών ωρών για “σήμερα”
+ * - Μηνύματα επιτυχίας/σφαλμάτων
  * - (Προαιρετικά) Anti-overlap lock με Google Apps Script
  ******************************************************/
 
@@ -32,24 +34,17 @@ const CLOSED_DATES = [
 /** Επιτρέπουμε κράτηση έως Χ ημέρες μπροστά */
 const MAX_DAYS_AHEAD = 60;
 
-/** Default ημερομηνία κατά το load:
- *  - 'today'  → σημερινή ημέρα (θα κοπούν παρελθοντικές ώρες)
- *  - 'tomorrow' → αύριο (προτείνεται για να βλέπει ο χρήστης διαθέσιμες ώρες εύκολα)
- */
-const DEFAULT_DATE = 'tomorrow';
-
-/** (Προαιρετικό) Αν θέλεις anti-overlap lock σε Google Apps Script:
- *  - Βάλε USE_LOCK=true
- *  - Βάλε το LOCK_ENDPOINT στο Web App URL από το Apps Script deployment
- *  - Τότε το JS θα κάνει ΠΡΩΤΑ POST στο endpoint:
- *      • αν ελεύθερο slot → ok:true → θα συνεχίσει σε FormSubmit
- *      • αν πιασμένο → reason:'taken' → θα δείξει μήνυμα σφάλματος
- */
-const USE_LOCK = false; // <-- άλλαξέ το σε true αν θέλεις κλείδωμα
-const LOCK_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyJFWZu4bVQgW_aUOAJpfoHzCMsd-zpYOAgpKwXwZt-ChZynXwHpJn-TLq3Zpcxqcu0/exec';
-
-/** Ενεργοποίησε logs για debug στην κονσόλα */
+/** Ενεργοποίησε logs για debug στην κονσόλα (DevTools) */
 const DEBUG_LOGS = true;
+
+/** (Προαιρετικό) Anti-overlap lock με Google Apps Script
+ *  - Αν θέλεις να αποτρέπεις διπλοκρατήσεις:
+ *    • Θέσε USE_LOCK = true
+ *    • Βάλε το LOCK_ENDPOINT στο Web App URL (Apps Script → Deploy → Web app)
+ *  - Αν δεν θες κλείδωμα, κράτα USE_LOCK = false (η φόρμα θα πάει κατευθείαν στο FormSubmit).
+ */
+const USE_LOCK = false; // <-- Βάλτο true αν θέλεις κλείδωμα
+const LOCK_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyJFWZu4bVQgW_aUOAJpfoHzCMsd-zpYOAgpKwXwZt-ChZynXwHpJn-TLq3Zpcxqcu0/exec'; // π.χ. https://script.google.com/macros/s/AKfycbx.../exec
 
 
 /* =============================
@@ -75,10 +70,15 @@ function isClosedDate(iso){
   return CLOSED_DATES.includes(iso);
 }
 
-function getSlotsForDate(isoDate){
-  // isoDate => "YYYY-MM-DD"
+// Προσοχή: χρησιμοποιούμε "YYYY-MM-DDT00:00:00" για να αποφύγουμε μετατοπίσεις ζώνης ώρας.
+function weekdayOfISO(isoDate){
   const d = new Date(isoDate + 'T00:00:00');
-  const weekday = d.getDay(); // 0..6
+  return d.getDay(); // 0..6
+}
+
+// Επιστρέφει slots για συγκεκριμένη ημερομηνία (κόβει παρελθοντικές αν είναι σήμερα)
+function getSlotsForDate(isoDate){
+  const weekday = weekdayOfISO(isoDate);
   const base = Array.isArray(AVAILABILITY[weekday]) ? AVAILABILITY[weekday] : [];
   log('getSlotsForDate:', { isoDate, weekday, base });
 
@@ -87,7 +87,7 @@ function getSlotsForDate(isoDate){
     return [];
   }
 
-  // Αν η ημερομηνία είναι σήμερα, κόψε παρελθοντικές ώρες
+  // Αν η ημερομηνία είναι σήμερα, αφαίρεσε τις παρελθοντικές ώρες
   const todayISO = toISODate(new Date());
   if (isoDate === todayISO) {
     const now = new Date();
@@ -103,9 +103,51 @@ function getSlotsForDate(isoDate){
   return base;
 }
 
+// Βρίσκει την 1η ημερομηνία (από σήμερα και μετά) που έχει διαθέσιμα slots
+function findFirstAvailableISODate(){
+  const today = new Date();
+  today.setHours(0,0,0,0);
+
+  for (let i = 0; i <= MAX_DAYS_AHEAD; i++){
+    const d = new Date(today);
+    d.setDate(today.getDate() + i);
+    const iso = toISODate(d);
+    const slots = getSlotsForDate(iso);
+    log('findFirstAvailableISODate check:', iso, 'slots:', slots);
+    if (slots.length > 0) return iso;
+  }
+  return null; // Καμία διαθέσιμη
+}
+
+function showError(text){
+  const errBox = document.getElementById('appt-error');
+  if (errBox){
+    errBox.textContent = text || 'Παρουσιάστηκε σφάλμα.';
+    errBox.style.display = 'block';
+  }
+}
+function hideError(){
+  const errBox = document.getElementById('appt-error');
+  if (errBox) errBox.style.display = 'none';
+}
+
+function showSuccess(){
+  const okBox = document.getElementById('appt-success');
+  if (okBox) okBox.style.display = 'block';
+}
+function hideSuccess(){
+  const okBox = document.getElementById('appt-success');
+  if (okBox) okBox.style.display = 'none';
+}
+
+/**
+ * Γεμίζει το dropdown ώρας με βάση το isoDate.
+ * Αν δεν υπάρχουν slots → εμφανίζει μήνυμα.
+ */
 function populateTimeSelect(selectEl, isoDate){
-  // Καθάρισε επιλογές
+  // Καθάρισε
   selectEl.innerHTML = '';
+
   const placeholder = document.createElement('option');
   placeholder.value = '';
   placeholder.disabled = true;
@@ -114,7 +156,6 @@ function populateTimeSelect(selectEl, isoDate){
   selectEl.appendChild(placeholder);
 
   const slots = getSlotsForDate(isoDate);
-  const errBox = document.getElementById('appt-error');
 
   if (!slots.length) {
     const o = document.createElement('option');
@@ -122,34 +163,20 @@ function populateTimeSelect(selectEl, isoDate){
     o.disabled = true;
     o.textContent = 'Δεν υπάρχουν διαθέσιμες ώρες';
     selectEl.appendChild(o);
-    if (errBox) {
-      errBox.textContent = 'Δεν βρέθηκαν διαθέσιμες ώρες για την επιλεγμένη ημερομηνία.';
-      errBox.style.display = 'block';
-    }
+    showError('Δεν βρέθηκαν διαθέσιμες ώρες για την επιλεγμένη ημερομηνία.');
     return;
   } else {
-    if (errBox) errBox.style.display = 'none';
+    hideError();
   }
 
   slots.forEach(t => {
     const o = document.createElement('option');
     o.value = t;
-    o.textContent = t; // (αν θες, μπορείς να μετατρέψεις σε 12ωρο με π.μ./μ.μ.)
+    o.textContent = t; // (αν θέλεις, μπορείς να το εμφανίσεις ως 12ωρο π.μ./μ.μ.)
     selectEl.appendChild(o);
   });
 
-  log('populateTimeSelect: final options →', slots);
-}
-
-function setDefaultDate(input){
-  if (input.value) return; // αν έχει ήδη τιμή (π.χ. από browser autofill), μην αλλάξεις
-  const base = new Date();
-  if (DEFAULT_DATE === 'tomorrow') {
-    base.setDate(base.getDate() + 1);
-  } else {
-    // 'today' ή οτιδήποτε άλλο→ κρατάμε σήμερα
-  }
-  input.value = toISODate(base);
+  log('populateTimeSelect: options →', slots);
 }
 
 
@@ -157,7 +184,6 @@ function setDefaultDate(input){
    INIT – Αρχικοποίηση
    ============================= */
 (function(){
-  // DOM refs
   const section    = document.getElementById('appointment');
   const form       = section ? section.querySelector('form') : null;
   const dateInput  = document.getElementById('appt-date');
@@ -167,47 +193,62 @@ function setDefaultDate(input){
   const errBox     = document.getElementById('appt-error');
 
   if (!section || !form || !dateInput || !timeSelect) {
-    warn('Δεν βρέθηκαν τα απαραίτητα στοιχεία (section/form/date/time). Έλεγξε τα IDs & τη δομή HTML.');
+    warn('Λείπουν στοιχεία DOM. Έλεγξε ότι υπάρχουν: #appointment, form, #appt-date, #appt-time');
     return;
   }
 
-  // Min/Max & Default date
+  // 1) Min/Max
   setMinMaxDate(dateInput);
-  setDefaultDate(dateInput);
 
-  // Γέμισμα dropdown με βάση την (τρέχουσα) τιμή
+  // 2) Διάλεξε αυτόματα την 1η διαθέσιμη μέρα (αν δεν υπάρχει ήδη τιμή)
+  if (!dateInput.value) {
+    const firstISO = findFirstAvailableISODate();
+    log('First available date:', firstISO);
+    if (firstISO) {
+      dateInput.value = firstISO;
+    } else {
+      // Καμία διαθέσιμη στα επόμενα MAX_DAYS_AHEAD
+      dateInput.value = toISODate(new Date()); // βάλε σήμερα για να μην είναι κενό
+      populateTimeSelect(timeSelect, dateInput.value);
+      showError('Δεν υπάρχουν διαθέσιμες ημέρες/ώρες στο διάστημα κρατήσεων.');
+      return;
+    }
+  }
+
+  // 3) Γέμισε τις ώρες για την επιλεγμένη ημερομηνία
   populateTimeSelect(timeSelect, dateInput.value);
 
-  // Όταν αλλάζει η ημερομηνία, ανανέωσε slots
+  // 4) Όταν αλλάζει η ημερομηνία, ανανέωσε slots
   dateInput.addEventListener('change', function(){
     if (!this.value) return;
     populateTimeSelect(timeSelect, this.value);
   });
 
-  // Μήνυμα επιτυχίας μετά από redirect (?appt=1)
+  // 5) Μήνυμα επιτυχίας μετά από redirect (?appt=1)
   const params = new URLSearchParams(window.location.search);
   if (params.get('appt') === '1') {
-    if (okBox) okBox.style.display = 'block';
+    showSuccess();
+    // Καθάρισε το query από το URL (χωρίς reload)
     const cleanURL = window.location.origin + window.location.pathname + '#appointment';
     window.history.replaceState({}, document.title, cleanURL);
   }
 
-  log('Init OK. Default date:', dateInput.value, 'Lock enabled:', USE_LOCK);
+  log('Init OK. dateInput.value=', dateInput.value, 'USE_LOCK=', USE_LOCK);
 
   /* ------------------------------------------
-     ΥΠΟΒΟΛΗ ΦΟΡΜΑΣ
-     - Αν USE_LOCK=false → αφήνουμε το FormSubmit να δουλέψει κανονικά (χωρίς intercept).
-     - Αν USE_LOCK=true → κάνουμε ΠΡΩΤΑ POST στο LOCK_ENDPOINT. Αν ok → native submit προς FormSubmit.
+     ΥΠΟΒΟΛΗ ΦΟΡΜΑΣ & ANTI-OVERLAP (προαιρετικό)
+     - Αν USE_LOCK = false → αφήνουμε το FormSubmit να δουλέψει κανονικά.
+     - Αν USE_LOCK = true → κάνουμε ΠΡΩΤΑ POST στο LOCK_ENDPOINT. Αν ok → native submit προς FormSubmit.
      ------------------------------------------ */
   if (USE_LOCK) {
     if (!LOCK_ENDPOINT || !/^https?:\/\//i.test(LOCK_ENDPOINT)) {
-      warn('USE_LOCK=true αλλά το LOCK_ENDPOINT είναι κενό/μη έγκυρο. Η φόρμα δεν θα υποβληθεί.');
+      warn('USE_LOCK=true αλλά το LOCK_ENDPOINT είναι κενό/μη έγκυρο. Η φόρμα δεν θα υποβληθεί μέσω lock.');
     }
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault(); // εμποδίζουμε το default για να γίνει πρώτα το lock
-      if (errBox) errBox.style.display = 'none';
-      if (okBox) okBox.style.display = 'none';
+      hideError();
+      hideSuccess();
 
       // Συλλογή πεδίων
       const fd = new FormData(form);
@@ -222,10 +263,7 @@ function setDefaultDate(input){
 
       // Γρήγοροι έλεγχοι client-side
       if (!payload.full_name || !payload.email || !payload.date || !payload.time) {
-        if (errBox) {
-          errBox.textContent = 'Συμπληρώστε όλα τα υποχρεωτικά πεδία.';
-          errBox.style.display = 'block';
-        }
+        showError('Συμπληρώστε όλα τα υποχρεωτικά πεδία.');
         return;
       }
 
@@ -236,18 +274,15 @@ function setDefaultDate(input){
         const nowMin = now.getHours()*60 + now.getMinutes();
         const [hh, mm] = String(payload.time).split(':').map(Number);
         if (hh*60 + mm <= nowMin) {
-          if (errBox) {
-            errBox.textContent = 'Η ώρα που επιλέξατε έχει ήδη περάσει.';
-            errBox.style.display = 'block';
-          }
+          showError('Η ώρα που επιλέξατε έχει ήδη περάσει.');
           return;
         }
       }
 
       // Απενεργοποίηση κουμπιού
-      let prev = '';
+      let prevText = '';
       if (btnSubmit) {
-        prev = btnSubmit.textContent;
+        prevText = btnSubmit.textContent;
         btnSubmit.disabled = true;
         btnSubmit.textContent = 'Έλεγχος διαθεσιμότητας...';
       }
@@ -268,26 +303,17 @@ function setDefaultDate(input){
           // Κλειδώθηκε → συνέχισε σε FormSubmit (native submit)
           HTMLFormElement.prototype.submit.call(form);
         } else if (data && data.reason === 'taken') {
-          if (errBox) {
-            errBox.textContent = 'Το συγκεκριμένο slot μόλις κλείστηκε από άλλον. Παρακαλώ επιλέξτε άλλη ώρα.';
-            errBox.style.display = 'block';
-          }
+          showError('Το συγκεκριμένο slot μόλις κλείστηκε από άλλον. Παρακαλώ επιλέξτε άλλη ώρα.');
         } else {
-          if (errBox) {
-            errBox.textContent = 'Πρόβλημα στον έλεγχο διαθεσιμότητας. Προσπαθήστε ξανά.';
-            errBox.style.display = 'block';
-          }
+          showError('Πρόβλημα στον έλεγχο διαθεσιμότητας. Προσπαθήστε ξανά.');
         }
       } catch (err) {
         warn('Lock request failed:', err);
-        if (errBox) {
-          errBox.textContent = 'Δικτυακό σφάλμα. Ελέγξτε τη σύνδεση και δοκιμάστε ξανά.';
-          errBox.style.display = 'block';
-        }
+        showError('Δικτυακό σφάλμα. Ελέγξτε τη σύνδεση και δοκιμάστε ξανά.');
       } finally {
         if (btnSubmit) {
           btnSubmit.disabled = false;
-          btnSubmit.textContent = prev || 'Κλείσιμο Ραντεβού';
+          btnSubmit.textContent = prevText || 'Κλείσιμο Ραντεβού';
         }
       }
     });
