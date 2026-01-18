@@ -77,7 +77,7 @@ body {
 
 /* Τετράγωνο κουτί για το logo */
   .logo-container {
-    width: 150px;           /* ρύθμισέ το κατά βούληση για mobile */
+    width: 20%;           /* ρύθμισέ το κατά βούληση για mobile */
     aspect-ratio: 1 / 1;   /* πάντα τετράγωνο */
     display: flex;
     align-items: center;
