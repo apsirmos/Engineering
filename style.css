@@ -76,7 +76,7 @@ body {
 
 .logo-container img {
     width: auto; /* Μείωση μεγέθους για καλύτερη εμφάνιση */
-    height: auto;
+    height: 120px;
     padding: 0px 0px;
 }
 
