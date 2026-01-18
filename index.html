@@ -129,16 +129,56 @@
             <p>📸 Instagram: <a href="#">@amindtherapy</a></p>
   </section>
   
-    <!-- Φόρμα Κλείσιμο Ραντεβού -->
-    <section id="appointment">
-        <h2>&nbspΚλείστε Ραντεβού</h2>
-        <form>
-            <input type="text" placeholder="Ονοματεπώνυμο" required>
-            <input type="email" placeholder="Email" required>
-            <input type="date" required>
-            <button type="submit">&nbspΚλείσιμο Ραντεβού</button>
-        </form>
-    </section>
+
+<!-- Φόρμα Κλείσιμο Ραντεβού -->
+<section id="appointment">
+  <h2>&nbsp;Κλείστε Ραντεβού</h2>
+
+  <!-- Μήνυμα επιτυχίας (εμφανίζεται μετά το redirect με ?appt=1) -->
+  <div id="appt-success"
+       style="display:none; margin:16px 0; padding:12px 16px; border-radius:8px; background:#e8f6ee; color:#115c39; border:1px solid #bfe7cf;">
+    ✅ Το ραντεβού στάλθηκε επιτυχώς! Θα επικοινωνήσουμε σύντομα για επιβεβαίωση.
+  </div>
+
+  <!-- ΣΗΜ.: Βάλε το email σου στο action -->
+  <form action="https://formsubmit.co/info@athinatherapy.com" method="POST">
+    <!-- Ορατά πεδία -->
+    <input type="text" name="full_name" placeholder="Ονοματεπώνυμο" required>
+    <input type="email" name="email" placeholder="Email" required>
+
+    <!-- Ημερομηνία -->
+    <input type="date" name="date" id="appt-date" required>
+
+    <!-- Ώρα (γεμίζει δυναμικά βάσει availability) -->
+    <select name="time" id="appt-time" required>
+      <option value="" disabled selected>Επιλέξτε ώρα</option>
+    </select>
+
+    <!-- Προαιρετικό τηλέφωνο -->
+    <input type="tel" name="phone" placeholder="Τηλέφωνο (προαιρετικό)">
+
+    <!-- Σχόλιο/Αίτημα -->
+    <textarea name="notes" placeholder="Σχόλια ή ειδικό αίτημα (προαιρετικό)"></textarea>
+
+    <!-- ΡΥΘΜΙΣΕΙΣ FormSubmit -->
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_subject" value="Αίτημα Ραντεβού - A Mind Therapy">
+
+    <!-- Redirect πίσω στο ίδιο URL με query param & άγκυρα στο #appointment -->
+    <!-- ⚠️ ΑΛΛΑΞΕ ΤΟ domain ΣΤΟ ΔΙΚΟ ΣΟΥ (π.χ. https://amindtherapy.gr/) -->
+    <input type="hidden" name="_next" value="https://athinamina.com/?appt=1#appointment">
+
+    <!-- Honeypot για spam -->
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+    <button type="submit">&nbsp;Κλείσιμο Ραντεβού</button>
+  </form>
+</section>
+
+<!-- Σύνδεση JS (βάλε το σωστό μονοπάτι αν το έχεις αλλού) -->
+<script src="appointment.js" defer></script>
+
 
     <!-- Footer -->
     <footer>
