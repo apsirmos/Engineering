@@ -271,25 +271,6 @@ button:hover {
 }
 
 
-
-
-
-
-/* Φόρμα Κλείσιμο Ραντεβού */
-#appointment form {
-    max-width: 400px;
-    background: blue;
-    padding: 20px 20px ;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    animation: slideUp 2s ease-in-out;
-    text-align: left;
-    justify-content: center;
-    align-items: center;
-
-}
-
-
 /* ====== Calendly Appointment Section Styles ====== */
 
 /* Βασικό reset/utility (προαιρετικό) */
