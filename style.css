@@ -497,29 +497,19 @@ footer {
 }
 
 
-/* ===== Modal Άρθρου (λευκό περιεχόμενο + X + blur φόντου) ===== */
-.article-modal { position: fixed; inset: 0; display: none; place-items: center; z-index: 999; }
-.article-modal[aria-hidden="false"] { display: grid; }
-.article-modal__overlay { position:absolute; inset:0; background: rgba(9, 18, 33, 0.55); backdrop-filter: blur(2px); }
-
-.article-modal__dialog {
-  position: relative; width: min(960px, calc(100% - 24px));
-  max-height: calc(100vh - 24px); overflow: auto;
-  background:#fff; border-radius: 16px; border: 1px solid #e2edff;
-  box-shadow: 0 16px 42px rgba(13,71,161,.20);
-  animation: modalIn .18s ease-out;
+/* Κάνει το <a> να “αγκαλιάζει” όλη την κάρτα */
+.article-card__link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+.article-card__link:focus {
+  outline: 2px solid #1976d2;
+  outline-offset: 2px;
 }
 
-.article-modal__close {
-  position: sticky; top: 0; right: 0; float: right; margin: 12px 12px 0 0;
-  width: 38px; height: 38px; display: inline-flex; align-items: center; justify-content: center;
-  border: none; border-radius: 50%; background: #edf4ff; color: #0d47a1; font-size: 22px; cursor: pointer; z-index: 2;
-}
-.article-modal__close:hover { background: #dfeaff; }
 
-.article-modal__content { padding: 0 20px 26px; }
-.article-modal__title { margin: 16px 0 10px; font-size: clamp(20px, 3vw, 26px); color:#0d47a1; }
-.article-modal__body { line-height: 1.8; font-size: 16px; color: #263238; }
+
 
 @keyframes modalIn { from { transform: translateY(6px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
