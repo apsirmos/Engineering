@@ -83,9 +83,6 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;      /* κρύβει τυχόν περίσσευμα */
-    border-radius: 0px;   /* προαιρετικό */
-    background: #fff;      /* προαιρετικό (για png με διαφάνεια) */
-    border: 0px solid #e0e0e0; /* προαιρετικό */
   }
 
   /* Η εικόνα του logo προσαρμόζεται χωρίς παραμόρφωση */
