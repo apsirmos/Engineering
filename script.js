@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     //        alert("Το μήνυμα στάλθηκε επιτυχώς!");
     //        this.reset();
     //    });
-    });
+    // });
 });
 
 
