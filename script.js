@@ -14,13 +14,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Μήνυμα επιβεβαίωσης για τις φόρμες
-    const forms = document.querySelectorAll("form");
-    forms.forEach(form => {
-        form.addEventListener("submit", function (event) {
-            event.preventDefault();
-            alert("Το μήνυμα στάλθηκε επιτυχώς!");
-            this.reset();
-        });
+    //const forms = document.querySelectorAll("form");
+    //forms.forEach(form => {
+    //    form.addEventListener("submit", function (event) {
+    //        event.preventDefault();
+    //        alert("Το μήνυμα στάλθηκε επιτυχώς!");
+    //        this.reset();
+    //    });
     });
 });
 
