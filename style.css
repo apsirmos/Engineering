@@ -74,10 +74,11 @@ body {
     flex-wrap: wrap; /* Επιτρέπει να αναδιπλώνεται στο κινητό */
 }
 
-.logo-container img {
+.logo-container {
     width: auto; /* Μείωση μεγέθους για καλύτερη εμφάνιση */
-    height: 100px;
+    height: auto;
     padding: 0px 0px;
+    aspect-ratio: 1 / 1
 }
 
 .title-container {
