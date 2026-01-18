@@ -77,13 +77,13 @@ body {
 
 /* Τετράγωνο κουτί για το logo */
   .logo-container {
-    width: 72px;           /* ρύθμισέ το κατά βούληση για mobile */
+    width: 100px;           /* ρύθμισέ το κατά βούληση για mobile */
     aspect-ratio: 1 / 1;   /* πάντα τετράγωνο */
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;      /* κρύβει τυχόν περίσσευμα */
-    border-radius: 10px;   /* προαιρετικό */
+    border-radius: 5px;   /* προαιρετικό */
     background: #fff;      /* προαιρετικό (για png με διαφάνεια) */
     border: 1px solid #e0e0e0; /* προαιρετικό */
   }
