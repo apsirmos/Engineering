@@ -74,10 +74,29 @@ body {
     flex-wrap: wrap; /* Επιτρέπει να αναδιπλώνεται στο κινητό */
 }
 
-.logo-container {
-    width: 100px; /* Μείωση μεγέθους για καλύτερη εμφάνιση */
-    padding: 0px 0px;
-}
+
+/* Τετράγωνο κουτί για το logo */
+  .logo-container {
+    width: 72px;           /* ρύθμισέ το κατά βούληση για mobile */
+    aspect-ratio: 1 / 1;   /* πάντα τετράγωνο */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;      /* κρύβει τυχόν περίσσευμα */
+    border-radius: 10px;   /* προαιρετικό */
+    background: #fff;      /* προαιρετικό (για png με διαφάνεια) */
+    border: 1px solid #e0e0e0; /* προαιρετικό */
+  }
+
+  /* Η εικόνα του logo προσαρμόζεται χωρίς παραμόρφωση */
+  .logo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;   /* ολόκληρο το logo μέσα στο τετράγωνο */
+    object-position: center;
+    display: block;
+  }
+
 
 .title-container {
     text-align: left;
