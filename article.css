@@ -1,0 +1,167 @@
+
+/* ===========================
+   A Mind Therapy - Article UI
+   Light Blue Theme
+   =========================== */
+
+:root{
+  --blue-900:#0d47a1;
+  --blue-800:#155fb0;
+  --blue-700:#1976d2;
+  --blue-500:#42a5f5;
+  --blue-50:#eef5ff;
+  --ink:#263238;
+  --muted:#5f7286;
+  --line:#e2edff;
+  --card:#ffffff;
+  --bg:#f2f7ff;
+  --radius:16px;
+  --shadow:0 10px 24px rgba(13,71,161,.12), 0 6px 12px rgba(13,71,161,.08);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family: "Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  line-height:1.7;
+}
+
+/* ---------- Topbar ---------- */
+.topbar{
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  padding:12px 16px;
+  background:linear-gradient(90deg,#bbdefb,#e3f2fd);
+  border-bottom:1px solid var(--line);
+  position: sticky; top:0; z-index: 10;
+}
+.back-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#edf4ff;border:1px solid var(--line);color:var(--blue-900);
+  padding:8px 12px;border-radius:10px; text-decoration:none; font-weight:600;
+}
+.back-btn:hover{ background:#e6f0ff }
+.share-btn{
+  margin-left:auto; display:inline-flex;align-items:center;gap:8px;
+  background:var(--blue-700);color:#fff;border:none;border-radius:10px;
+  padding:8px 12px; cursor:pointer; font-weight:600;
+}
+.share-btn:hover{ background:var(--blue-800) }
+
+/* ---------- Layout ---------- */
+.wrap{max-width:960px;margin:24px auto 56px;padding:0 16px}
+
+/* ---------- Hero ---------- */
+.hero{ border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); background:#cfe0ff; }
+.hero img{display:block;width:100%;height: clamp(220px, 46vw, 420px);object-fit:cover}
+.article-head{
+  background:var(--card); padding:18px 18px 22px;
+  border:1px solid var(--line); border-top:none; border-radius:0 0 var(--radius) var(--radius);
+}
+.article-title{
+  font-family:"Playfair Display",serif;
+  font-size: clamp(24px, 3.6vw, 38px);
+  color:var(--blue-900); line-height:1.25; margin:6px 0 6px;
+}
+.article-subtitle{color:var(--muted); margin:0 0 8px; font-size:16px}
+.article-meta{color:#6b7f94;font-size:14px}
+
+/* ---------- Cards & Body ---------- */
+.card{
+  background:var(--card); border:1px solid var(--line);
+  border-radius:var(--radius); box-shadow:var(--shadow); padding:22px;
+  margin-top:18px;
+}
+.h2{
+  margin:0 0 12px; color:var(--blue-900); font-size:clamp(20px,2.8vw,26px);
+}
+.article-body h2,.article-body h3,.article-body h4{
+  font-family:"Playfair Display",serif; color:var(--blue-700); margin:22px 0 8px;
+}
+.article-body p{margin:0 0 12px}
+.article-body img{max-width:100%;height:auto;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.06)}
+.article-body ul{padding-left:20px}
+.article-body blockquote{
+  margin:14px 0; padding:12px 16px; background:#f7fbff;
+  border-left:4px solid var(--blue-500); border-radius:8px; color:#355;
+}
+
+/* ---------- Share Bar ---------- */
+.share-bar{
+  display:flex; flex-wrap:wrap; gap:10px; align-items:center;
+  padding:14px; border:1px dashed var(--line); border-radius:12px; background:#f7fbff; margin-top:10px;
+}
+.share-bar .label{color:#355; font-weight:600}
+.share-btns a,.share-btns button{
+  display:inline-flex; align-items:center; gap:8px;
+  border:1px solid var(--line); background:#fff; color:var(--blue-900);
+  border-radius:10px; padding:8px 12px; text-decoration:none; cursor:pointer; font-weight:600;
+}
+.share-btns a:hover,.share-btns button:hover{background:#edf4ff}
+
+/* ---------- Rating Form (Stars) ---------- */
+.rating-form{ display:flex; flex-direction:column; gap:14px; }
+.rating-legend{ font-weight:700; color:var(--blue-900); margin-bottom:6px; }
+.rating-fieldset{ border:none; padding:0; margin:0; }
+
+/* Κρίσιμο για σωστή λειτουργία των αστεριών */
+.stars{
+  display:flex; flex-direction:row-reverse; /* αντιστρέφει τη σειρά οπτικά */
+  justify-content:flex-start; gap:8px;
+  font-size:0; /* για να μην υπάρχουν κενά ανάμεσα στα labels */
+}
+.stars input{ display:none } /* κρύβουμε τα radio */
+.stars label{
+  font-size:30px; line-height:1;
+  color:#cbd5e1; cursor:pointer; user-select:none;
+  transition: transform .12s ease, color .12s ease;
+}
+.stars label:hover, .stars label:hover ~ label{ color:#ffca28 }     /* hover γεμίζει μέχρι αριστερά */
+.stars input:checked ~ label{ color:#ffb300 }                       /* checked γεμίζει μέχρι αριστερά */
+.stars label:active{ transform: scale(.95) }
+
+.rating-grid{
+  display:grid; gap:12px; grid-template-columns: 1fr 1fr; 
+}
+.rating-grid .textarea{ grid-column: 1 / -1; min-height:120px; }
+
+.input, .textarea{
+  width:100%; padding:12px 12px; border:1px solid var(--line);
+  border-radius:10px; background:#fff; font-size:15px; color:var(--ink);
+}
+.input:focus, .textarea:focus{
+  outline:none; border-color:#b9d3ff; box-shadow:0 0 0 4px rgba(66,165,245,.15);
+}
+
+.rating-actions{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.note{font-size:13px; color:#6b7f94}
+
+/* ---------- Buttons ---------- */
+.btn{ display:inline-flex; align-items:center; gap:8px; cursor:pointer; border-radius:10px; padding:10px 14px; font-weight:700; text-decoration:none; }
+.btn-primary{ background:var(--blue-700); color:#fff; border:1px solid var(--blue-700); }
+.btn-primary:hover{ background:var(--blue-800); }
+
+/* ---------- Footer nav ---------- */
+.foot-nav{
+  display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:18px;
+}
+.foot-nav a{
+  display:inline-flex; align-items:center; gap:6px; color:var(--blue-700); text-decoration:none; font-weight:700;
+  background:#edf4ff; border:1px solid var(--line); padding:8px 12px; border-radius:10px;
+}
+.foot-nav a:hover{ background:#e6f0ff }
+
+/* ---------- Toast ---------- */
+.toast{
+  position: fixed; left:50%; transform:translateX(-50%);
+  bottom:22px; background:#0f1842; color:#fff; padding:10px 14px; border-radius:10px; display:none;
+  box-shadow:0 10px 24px rgba(0,0,0,.2); z-index:9999; font-size:14px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 680px){
+  .rating-grid{ grid-template-columns: 1fr; }
+}
+
+	  
