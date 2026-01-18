@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ψυχαναγκασμός και «πρέπει» | A Mind Therapy</title>
+  <meta name="description" content="Τι είναι ο ψυχαναγκασμός (Ιδεοψυχαναγκαστική Διαταραχή), πότε γίνεται πρόβλημα και πώς αντιμετωπίζεται. Κατηγορίες ιδεοληψιών και ψυχαναγκασμών, αίτια και πρακτικές θεραπείας.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;500;700&display=swap">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Ψυχαναγκασμός και «πρέπει» | A Mind Therapy">
+  <meta property="og:description" content="Τι είναι ο ψυχαναγκασμός (ΙΔΨ), πότε γίνεται πρόβλημα και πώς αντιμετωπίζεται. Κατηγορίες ιδεοληψιών και ψυχαναγκασμών, αίτια και θεραπεία.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1496302662116-35cc4f36df92?q=80&w=1200&auto=format&fit=crop">
+  <meta property="og:url" content="">
+
+  <style>
+    :root{
+      --blue-900:#0d47a1;
+      --blue-800:#155fb0;
+      --blue-700:#1976d2;
+      --blue-500:#42a5f5;
+      --blue-50:#eef5ff;
+      --ink:#263238;
+      --muted:#5f7286;
+      --card:#ffffff;
+      --bg:#f2f7ff;
+      --radius:16px;
+      --shadow:0 10px 24px rgba(13,71,161,.12), 0 6px 12px rgba(13,71,161,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: "Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      color:var(--ink);
+      background:var(--bg);
+      line-height:1.7;
+    }
+
+    /* Top bar */
+    .topbar{
+      display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+      padding:12px 16px; background:linear-gradient(90deg,#bbdefb,#e3f2fd);
+      border-bottom:1px solid #d9e8ff;
+      position: sticky; top:0; z-index: 10;
+    }
+    .topbar .back-btn{
+      display:inline-flex;align-items:center;gap:8px;
+      background:#edf4ff;border:1px solid #d9e8ff;color:var(--blue-900);
+      padding:8px 12px;border-radius:10px; text-decoration:none; font-weight:600;
+    }
+    .topbar .back-btn:hover{background:#e6f0ff}
+    .topbar .share-btn{
+      margin-left:auto; display:inline-flex;align-items:center;gap:8px;
+      background:var(--blue-700);color:#fff;border:none;border-radius:10px;
+      padding:8px 12px; cursor:pointer; font-weight:600;
+    }
+    .topbar .share-btn:hover{background:var(--blue-800)}
+
+    /* Wrapper */
+    .wrap{max-width:960px;margin:24px auto 56px;padding:0 16px}
+
+    /* Hero */
+    .hero{ border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); background:#cfe0ff; }
+    .hero img{display:block;width:100%;height: clamp(220px, 46vw, 420px);object-fit:cover}
+    .article-head{
+      background:var(--card); padding:18px 18px 22px;
+      border:1px solid #e2edff; border-top:none; border-radius:0 0 var(--radius) var(--radius);
+    }
+    .article-title{
+      font-family:"Playfair Display",serif;
+      font-size: clamp(24px, 3.6vw, 38px);
+      color:var(--blue-900); line-height:1.25; margin:6px 0 6px;
+    }
+    .article-subtitle{color:var(--muted); margin:0 0 8px; font-size:16px}
+    .article-meta{color:#6b7f94;font-size:14px}
+
+    /* Body card */
+    .card{
+      background:var(--card); border:1px solid #e2edff;
+      border-radius:var(--radius); box-shadow:var(--shadow); padding:22px;
+      margin-top:18px;
+    }
+    .article-body h2,.article-body h3,.article-body h4{
+      font-family:"Playfair Display",serif; color:var(--blue-700); margin:22px 0 8px;
+    }
+    .article-body p{margin:0 0 12px}
+    .article-body img{max-width:100%;height:auto;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.06)}
+    .article-body ul{padding-left:20px}
+    .article-body blockquote{ margin:14px 0; padding:12px 16px; background:#f7fbff; border-left:4px solid var(--blue-500); border-radius:8px; color:#355; }
+
+    /* Share bar */
+    .share-bar{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; padding:14px; border:1px dashed #d9e8ff; border-radius:12px; background:#f7fbff; margin-top:10px; }
+    .share-bar .label{color:#355; font-weight:600}
+    .share-btns a,.share-btns button{ display:inline-flex; align-items:center; gap:8px; border:1px solid #d9e8ff; background:#fff; color:var(--blue-900); border-radius:10px; padding:8px 12px; text-decoration:none; cursor:pointer; font-weight:600; }
+    .share-btns a:hover,.share-btns button:hover{background:#edf4ff}
+
+    /* Rating form */
+    .rating{ display:flex; flex-direction:column; gap:10px; }
+    .stars{ display:flex; flex-direction:row-reverse; justify-content:flex-end; gap:8px }
+    .stars input{ display:none }
+    .stars label{ font-size:28px; color:#cbd5e1; cursor:pointer; transition:transform .12s; }
+    .stars label:hover, .stars label:hover ~ label{ color:#ffca28 }
+    .stars input:checked ~ label{ color:#ffb300 }
+    .rating textarea{ width:100%; min-height:110px; padding:10px; border:1px solid #d9e8ff; border-radius:10px; resize:vertical; font-family: inherit; font-size:15px; }
+    .rating .submit-btn{ align-self:flex-start; background:var(--blue-700); color:#fff; border:none; border-radius:10px; padding:10px 14px; cursor:pointer; font-weight:700; }
+    .rating .submit-btn:hover{ background:var(--blue-800) }
+    .note{font-size:13px; color:#6b7f94}
+
+    /* Toast */
+    .toast{ position: fixed; left:50%; transform:translateX(-50%); bottom:22px; background:#0f1842; color:#fff; padding:10px 14px; border-radius:10px; display:none; box-shadow:0 10px 24px rgba(0,0,0,.2); z-index:9999; font-size:14px; }
+
+    /* Footer-in-article */
+    .foot-nav{ display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:18px; }
+    .foot-nav a{ display:inline-flex; align-items:center; gap:6px; color:var(--blue-700); text-decoration:none; font-weight:700; background:#edf4ff; border:1px solid #d9e8ff; padding:8px 12px; border-radius:10px; }
+    .foot-nav a:hover{ background:#e6f0ff }
+
+    /* Mobile */
+    @media (max-width:680px){
+      .article-head{padding:16px}
+      .card{padding:16px}
+    }
+  </style>
+
+  <!-- JSON-LD Article (SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Ψυχαναγκασμός και «πρέπει»",
+    "description":"Τι είναι ο ψυχαναγκασμός (ΙΔΨ), πότε γίνεται πρόβλημα και πώς αντιμετωπίζεται.",
+    "author":{"@type":"Person","name":"Αθηνά Μηνά"},
+    "publisher":{"@type":"Organization","name":"A Mind Therapy"},
+    "image":"https://images.unsplash.com/photo-1496302662116-35cc4f36df92?q=80&w=1200&auto=format&fit=crop",
+    "datePublished":"2026-01-18"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Top utilities -->
+  <div class="topbar">
+    <a href="index.html#articles" class="back-btn" aria-label="Πίσω στα Άρθρα">‹ Πίσω στα Άρθρα</a>
+    <button class="share-btn" id="sysShareBtn" type="button">📣 Κοινοποίηση</button>
+  </div>
+
+  <main class="wrap" id="top">
+    <!-- HERO -->
+    <section class="hero" aria-label="Εικόνα άρθρου">
+      <img src="https://images.unsplash.com/photo-1496302662116-35cc4f36df92?q=80&w=1600&auto=format&fit=crop" alt="Συμμετρία και οργάνωση σε αντικείμενα">
+      <div class="article-head">
+        <h1 class="article-title">Ψυχαναγκασμός και «πρέπει»</h1>
+        <p class="article-subtitle">Σχολαστικότητα, συμμετρία, τελειομανία, επαναλήψεις: πότε οι συνήθειες γίνονται εμπόδιο και τι μπορούμε να κάνουμε.</p>
+        <div class="article-meta">Κατηγορία: Ψυχική Υγεία • Ημερομηνία: 18/01/2026 • Συγγραφέας: Αθηνά Μηνά</div>
+      </div>
+    </section>
+
+    <!-- ΣΩΜΑ ΑΡΘΡΟΥ -->
+    <article class="card article-body">
+      <p>Σχολαστικότητα, απόλυτη συμμετρία, τελειομανία, επαναλαμβανόμενες συνήθειες, στρογγυλοποίηση αριθμών, «όλα σε τάξη». Δε γίνεται αλλιώς… Αν λοιπόν πριν φύγει κανείς απ’ το σπίτι ελέγχει δέκα φορές αν έκλεισε τα φώτα, τον θερμοσίφωνα, αν στάζουν οι βρύσες και αν κλείδωσε τις πόρτες, σημαίνει ότι είναι «ψυχαναγκαστικός»; Όταν ο περίγυρός του ενοχλείται από αυτές τις επαναλαμβανόμενες και κάπως υπερβολικές συνήθειες, μήπως τότε είναι κανείς αυτό που χαρακτηρίζουμε ως ψυχαναγκαστικός;</p>
+
+      <h2>Πότε υπάρχει ουσιαστικό πρόβλημα;</h2>
+      <p>Οι ψυχαναγκαστικά επαναλαμβανόμενες δραστηριότητες μοιάζουν συχνά με καθημερινές τελετουργίες. Είναι σημαντικό να ελέγχουμε ότι δεν λειτουργούν οι ηλεκτρικές συσκευές πριν φύγουμε από το σπίτι ή να πλένουμε τα χέρια μας όταν απαιτείται. Η διαχωριστική γραμμή αρχίζει όταν οι έλεγχοι γίνονται τόσο χρονοβόροι ώστε δυσκολευόμαστε να κλείσουμε την πόρτα πίσω μας, ή όταν πλένουμε συνεχώς τα χέρια, επειδή θεωρούμε μολυσμένο ακόμη και το πετσετάκι — μέχρι που δημιουργούνται πληγές.</p>
+      <figure>
+        <img src="https://images.unsplash.com/photo-1520975922284-9bcd8c7c0f4a?q=80&w=1200&auto=format&fit=crop" alt="Απόλυτη τάξη σε γραφικά αντικείμενα">
+      </figure>
+
+      <h2>Τι είναι ο ψυχαναγκασμός (Ιδεοψυχαναγκαστική Διαταραχή)</h2>
+      <p>Ο ψυχαναγκασμός, ή αλλιώς Ιδεοψυχαναγκαστική Διαταραχή (ΙΔΨ), ανήκει στις αγχώδεις διαταραχές. Χαρακτηρίζεται από ιδεοληψίες, ψυχαναγκασμούς ή και τα δύο. Οι εκδηλώσεις αυτές αποτελούν πηγή δυσφορίας και καταλαμβάνουν χρόνο από τη συναισθηματική, κοινωνική και επαγγελματική ζωή. Το άγχος μειώνεται προσωρινά μόνο όταν εκτελεστεί η ψυχαναγκαστική πράξη. Παρότι οι πάσχοντες συνήθως αναγνωρίζουν τον παράλογο χαρακτήρα των καταναγκασμών, δυσκολεύονται να αντισταθούν.</p>
+
+      <h3>Ιδεοληψίες – κατηγορίες</h3>
+      <ul>
+        <li><strong>Φοβικές ιδεοληψίες:</strong> ανησυχία και φόβος απέναντι σε αντικείμενα ή καταστάσεις (π.χ. κίνδυνος μόλυνσης, ασθένεια, θάνατος).</li>
+        <li><strong>Ιδεακές ιδεοληψίες:</strong> ακούσια επιβολή σκέψης/λέξης/αριθμού (π.χ. αμφιβολίες για το κλείδωμα πόρτας, το κλείσιμο της κουζίνας).</li>
+        <li><strong>Ιδεοληπτικές παρορμήσεις:</strong> αίσθηση ότι μπορεί κανείς να εκτελέσει πράξεις ή να μιλήσει για κάτι αντίθετο με τις αξίες/σχέσεις του (π.χ. φόβος ότι θα επιτεθεί στο παιδί του).</li>
+      </ul>
+
+      <h3>Ψυχαναγκασμοί</h3>
+      <p>Επαναλαμβανόμενες συμπεριφορές ως «τελετουργίες» για μείωση άγχους (π.χ. ονοματομανία, αριθμομανία). Η ανακούφιση είναι προσωρινή και ο κύκλος επανέρχεται.</p>
+
+      <h3>Αιτίες – τι γνωρίζουμε</h3>
+      <p>Οι αιτίες δεν είναι απολύτως βέβαιες. Εμπλέκονται βιολογικοί παράγοντες (διαφορετική εγκεφαλική δραστηριότητα που επηρεάζει επεξεργασία πληροφοριών, σκέψη και συμπεριφορά) και κληρονομικότητα (σε οικογένειες με ΙΔΨ αυξάνονται οι πιθανότητες εμφάνισης συμπτωμάτων).</p>
+      <figure>
+        <img src="https://images.unsplash.com/photo-1543294001-f7cd5d7fb516?q=80&w=1200&auto=format&fit=crop" alt="Συμμετρία με ένα διαφορετικό στοιχείο">
+      </figure>
+
+      <h3>Τι δεν είναι ο ψυχαναγκασμός</h3>
+      <p>Ο ψυχαναγκασμός δεν ταυτίζεται με την «τρέλα» ή την παρανόηση. Οι αιτίες της σχιζοφρένειας είναι διαφορετικές. Συχνά μάλιστα εξαιρετικά ευφυείς άνθρωποι υποφέρουν από ψυχαναγκασμούς· όμως η ενέργεια διοχετεύεται σε λεπτομερείς, επαναληπτικές πράξεις, με κόστος στην αποτελεσματικότητα και την αυτοεκτίμηση.</p>
+
+      <h3>Επιπτώσεις στην καθημερινότητα</h3>
+      <p>Η μακρόχρονη επιμονή των τελετουργιών καθιστά την καθημερινότητα δυσλειτουργική: μειώνεται η ικανοποίηση από τη ζωή, οι σχέσεις δυσκολεύουν και το περιβάλλον συχνά παρερμηνεύει τη συμπεριφορά ως «ιδιοτροπία».</p>
+
+      <h2>Αντιμετώπιση</h2>
+      <p>Η διάγνωση γίνεται από ειδικό ψυχίατρο. Υπάρχουν δύο βασικοί άξονες αντιμετώπισης:</p>
+      <ul>
+        <li><strong>Φαρμακευτική αγωγή:</strong> Αναστολείς επαναπρόσληψης σεροτονίνης μπορούν να μειώσουν συμπτώματα· η διακοπή συχνά επιφέρει υποτροπή, για αυτό δεν αποτελούν αυτόνομη, μακροπρόθεσμη λύση.</li>
+        <li><strong>Γνωσιακή–Συμπεριφορική Θεραπεία (ΓΣΘ):</strong> Επικεντρώνεται στην αλλαγή των πεποιθήσεων και στη μέθοδο «Έκθεση και Παρεμπόδιση Απόκρισης (ERP)»: ελεγχόμενη έκθεση στην ιδεοληψία και άσκηση αποχής από τον ψυχαναγκασμό, ώστε να φθαρεί το άγχος και να αποδυναμωθεί ο κύκλος. Χρήσιμη μπορεί να είναι και η συμμετοχή σε ομάδες υποστήριξης.</li>
+      </ul>
+
+      <!-- Μπάρα κοινοποίησης -->
+      <div class="share-bar" aria-label="Κοινοποίηση άρθρου">
+        <span class="label">Κοινοποίηση:</span>
+        <div class="share-btns">
+          <a id="share-fb" href="#" target="_blank" rel="noopener">Facebook</a>
+          <a id="share-x" href="#" target="_blank" rel="noopener">X / Twitter</a>
+          <a id="share-li" href="#" target="_blank" rel="noopener">LinkedIn</a>
+          <a id="share-wa" href="#" target="_blank" rel="noopener">WhatsApp</a>
+          <button id="copy-link" type="button">Αντιγραφή συνδέσμου</button>
+        </div>
+      </div>
+    </article>
+
+   
+<!-- Φόρμα αξιολόγησης -->
+<section class="card" aria-label="Αξιολόγηση άρθρου">
+  <h2 class="h2">Αξιολόγηση Άρθρου</h2>
+
+  <form class="rating-form" action="https://formsubmit.co/info@athinatherapy.com" method="POST">
+    <fieldset class="rating-fieldset">
+      <legend class="rating-legend">Πόσο χρήσιμο βρήκατε το άρθρο;</legend>
+
+      <!-- ΑΣΤΕΡΙΑ: προσοχή στη σειρά inputs 5→1 -->
+      <div class="stars" role="radiogroup" aria-label="Αξιολόγηση 1 έως 5">
+        <input type="radio" id="rate-5" name="rating" value="5" required>
+        <label for="rate-5" title="Εξαιρετικό (5/5)" aria-label="5 αστέρια">★</label>
+
+        <input type="radio" id="rate-4" name="rating" value="4">
+        <label for="rate-4" title="Πολύ καλό (4/5)" aria-label="4 αστέρια">★</label>
+
+        <input type="radio" id="rate-3" name="rating" value="3">
+        <label for="rate-3" title="Καλό (3/5)" aria-label="3 αστέρια">★</label>
+
+        <input type="radio" id="rate-2" name="rating" value="2">
+        <label for="rate-2" title="Μέτριο (2/5)" aria-label="2 αστέρια">★</label>
+
+        <input type="radio" id="rate-1" name="rating" value="1">
+        <label for="rate-1" title="Χρειάζεται βελτίωση (1/5)" aria-label="1 αστέρι">★</label>
+      </div>
+    </fieldset>
+
+    <div class="rating-grid">
+      <input type="text" name="name" class="input" placeholder="Όνομα (προαιρετικό)">
+      <input type="email" name="email" class="input" placeholder="Email (προαιρετικό)">
+      <textarea name="comments" class="textarea" placeholder="Σχόλια (προαιρετικά)"></textarea>
+    </div>
+
+    <!-- Κρυφά πεδία FormSubmit -->
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_subject" value="Αξιολόγηση Άρθρου: Ψυχαναγκασμός και «πρέπει»">
+    <input type="hidden" name="article_title" value="Ψυχαναγκασμός και «πρέπει»">
+    <input type="hidden" name="article_url" id="article_url" value="">
+    <input type="hidden" name="_next" id="form_next" value="">
+
+    <div class="rating-actions">
+      <button type="submit" class="btn btn-primary">Υποβολή αξιολόγησης</button>
+      <span class="note">Με την υποβολή, συμφωνείτε στην επεξεργασία των στοιχείων σας για τον σκοπό της αξιολόγησης.</span>
+    </div>
+  </form>
+</section>
