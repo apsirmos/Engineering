@@ -284,7 +284,7 @@ button:hover {
   display: grid;
   gap: 16px;
   justify-items: center;
-  background: linear-gradient(180deg, #f7f9fc 0%, #ffffff 100%);
+  background: #bbdefb;
 }
 
 #appointment .appt-title {
@@ -293,7 +293,7 @@ button:hover {
   font-weight: 700;
   font-size: clamp(22px, 2.5vw, 28px);
   letter-spacing: 0.2px;
-  color: #0b3d91; /* μπλε τίτλου */
+  color: #bbdefb; /* μπλε τίτλου */
   text-align: center;
 }
 
@@ -302,7 +302,7 @@ button:hover {
   font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   font-weight: 400;
   font-size: clamp(14px, 1.8vw, 18px);
-  color: #3b4c67;
+  color: #bbdefb;
   text-align: center;
   max-width: 820px;
   line-height: 1.6;
@@ -331,7 +331,7 @@ button:hover {
   border-radius: 50%;
   pointer-events: none;
   filter: blur(16px);
-  opacity: 0.18;
+  opacity: 0.5;
 }
 .calendly-card::before {
   width: 240px;
@@ -343,7 +343,7 @@ button:hover {
 .calendly-card::after {
   width: 320px;
   height: 320px;
-  background: #cfe2ff;
+  background: blue;
   bottom: -100px;
   right: -120px;
 }
@@ -352,7 +352,7 @@ button:hover {
 .calendly-inline-widget {
   width: 100% !important;
   height: clamp(560px, 70vh, 820px) !important; /* responsive ύψος */
-  background: #ffffff;             /* λευκό καμβάς μέσα στο μπλε box */
+  background: #9bcbf2;             /* λευκό καμβάς μέσα στο μπλε box */
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.45);
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
@@ -392,29 +392,7 @@ button:hover {
   }
 }
 
-/* -------- Προαιρετικό: dark mode (αν ο browser/OS είναι σε dark) -------- */
-@media (prefers-color-scheme: dark) {
-  #appointment {
-    background: linear-gradient(180deg, #0e1117 0%, #0b0e14 100%);
-  }
-  #appointment .appt-title { color: #cfe2ff; }
-  #appointment .appt-subtitle { color: #b6c2d9; }
 
-  .calendly-card {
-    background: linear-gradient(135deg, #124a94 0%, #2a69c7 100%);
-    box-shadow:
-      0 10px 18px rgba(0, 0, 0, 0.45),
-      0 3px 8px rgba(0, 0, 0, 0.35);
-  }
-  .calendly-card::before { background: rgba(255,255,255,0.22); }
-  .calendly-card::after  { background: rgba(207,226,255,0.28); }
-
-  .calendly-inline-widget {
-    background: #0f141c;
-    border-color: rgba(255,255,255,0.18);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
-  }
-}
 
 
 input, button {
