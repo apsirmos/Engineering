@@ -100,15 +100,22 @@ body {
     padding-left: 20px;
 }
 
-.site-title {
-    font-size: 18px; /* Κανονικό μέγεθος για desktop */
-    margin: 0;
-}
 
-.site-subtitle {
-    font-size: 14px;
+  /* Τίτλος: κλιμακώνει με βάση το πλάτος (vw), 
+     αλλά δεν πέφτει κάτω από 20px ούτε ανεβαίνει πάνω από 28px */
+  .site-title {
+    font-size: clamp(20px, 6.5vw, 28px);
     margin: 0;
-}
+    line-height: 1.2;
+  }
+
+  /* Υπότιτλος: λίγο μικρότερη κλίμακα */
+  .site-subtitle {
+    font-size: clamp(14px, 4.6vw, 20px);
+    margin: 0;
+    line-height: 1.35;
+  }
+
 }
 
 
