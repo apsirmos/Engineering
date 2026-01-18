@@ -293,6 +293,9 @@ button:hover {
       text-align: center;
 }
 
+#appointment h3{
+      text-align: center;
+}
 
 input, button {
     width: 100%;
