@@ -76,7 +76,7 @@ body {
 
 .logo-container {
     width: auto; /* Μείωση μεγέθους για καλύτερη εμφάνιση */
-    height: auto;
+    height: 100px;
     padding: 0px 0px;
     aspect-ratio: 1 / 1
 }
