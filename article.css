@@ -107,7 +107,7 @@ body{
 
 /* Κρίσιμο για σωστή λειτουργία των αστεριών */
 .stars{
-  display:flex; flex-direction:row-reverse; /* αντιστρέφει τη σειρά οπτικά */
+  display:flex; flex-direction:row; /* αντιστρέφει τη σειρά οπτικά */
   justify-content:flex-start; gap:8px;
   font-size:0; /* για να μην υπάρχουν κενά ανάμεσα στα labels */
 }
