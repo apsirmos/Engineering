@@ -99,16 +99,17 @@
             <h2>Επικοινωνία</h2>
             <p>Μπορείτε να επικοινωνήσετε μαζί μου μέσω της παρακάτω φόρμας ή με άλλους τρόπους.</p>
             
-            <form action="mailto:info@amindtherapy.gr" method="post" enctype="text/plain">
-                <label for="name">Όνομα:</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="message">Μήνυμα:</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-
+            <form action="https://formsubmit.co/info@athinatherapy.com" method="POST">
+                <input type="text" name="name" placeholder="Όνομα" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="message" placeholder="Μήνυμα" required></textarea>
+            
+                <!-- Optional redirect μετά την αποστολή -->
+                <input type="hidden" name="_next" value="https://amindtherapy.gr/thankyou.html">
+            
+                <!-- Προστασία από spam -->
+                <input type="text" name="_honey" style="display:none">
+            
                 <button type="submit">Αποστολή</button>
             </form>
           </div>
