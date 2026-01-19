@@ -118,7 +118,7 @@ body {
 
       /* Υπότιτλος: λίγο μικρότερη κλίμακα */
   .site-subtitle2 {
-    font-size: clamp(10px, 4.6vw, 16px);
+    font-size: clamp(10px, 3vw, 16px);
     margin: 0;
     line-height: 1.35;
   }
