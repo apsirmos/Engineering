@@ -119,7 +119,7 @@ body {
       /* Υπότιτλος: λίγο μικρότερη κλίμακα */
   .site-subtitle2 {
     font-size: clamp(10px, 3vw, 16px);
-    margin-top: 15px;
+    margin-top: 12px;
     line-height: 1.35;
   }
 
