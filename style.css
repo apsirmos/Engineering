@@ -120,6 +120,7 @@ body {
   .site-subtitle2 {
     font-size: clamp(10px, 3vw, 16px);
     margin: 0;
+    margin-top: 5px;
     line-height: 1.35;
   }
 
